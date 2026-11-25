@@ -1,7 +1,7 @@
 // Build: node build.mjs      (groom's side: Vedant & Vrishali)
 // Source of truth is src/template.html (English). One build writes two sites into dist/:
 //   WEDDING + RECEPTION   dist/en/  dist/ma/  dist/index.html            (https://<site>/)
-//   RECEPTION ONLY        dist/reception/en/  dist/reception/ma/  dist/reception/index.html   (https://<site>/reception/)
+//   RECEPTION ONLY        dist/rec/en/  dist/rec/ma/  dist/rec/index.html   (https://<site>/rec/)
 //   dist/404.html, dist/_headers, dist/assets/...
 // Marathi text is applied by exact replacement pairs (MR). The reception-only pages come from the same template: blocks marked
 // <!--@w-->...<!--@/w--> are removed and the REC pairs swap the date, time, venue and wording. Every pair must match,
@@ -310,7 +310,7 @@ mustNot(recMr, [...BRIDE_ONLY, "सिल्वर स्टार", "शेग�
 rmSync(OUT, { recursive: true, force: true });
 const SETS = [
   { dir: "", up: "../", img: ["og-en.jpg", "og-mr.jpg"], en: weddingEn, mr: weddingMr, title: "Vedant &amp; Vrishali · Wedding &amp; Reception Invitation · वेदांत 卐 वृषाली", desc: "Wedding: Friday, 1 January 2027 · 10:30 AM · Silver Star Celebration Hall, Amravati. Reception: Saturday, 2 January 2027 · 7:00 PM · Lotus Inn Butterfly Lawn, Amravati" },
-  { dir: "reception/", up: "../../", img: ["og-reception-en.jpg", "og-reception-mr.jpg"], en: recEn, mr: recMr, title: "Vedant &amp; Vrishali · Reception Invitation · वेदांत 卐 वृषाली", desc: "Saturday, 2 January 2027 · 7:00 PM to 11:00 PM · Lotus Inn Butterfly Lawn, Rahatgaon Ring Road, Amravati" },
+  { dir: "rec/", up: "../../", img: ["og-reception-en.jpg", "og-reception-mr.jpg"], en: recEn, mr: recMr, title: "Vedant &amp; Vrishali · Reception Invitation · वेदांत 卐 वृषाली", desc: "Saturday, 2 January 2027 · 7:00 PM to 11:00 PM · Lotus Inn Butterfly Lawn, Rahatgaon Ring Road, Amravati" },
 ];
 for (const s of SETS) {
   mkdirSync(new URL(`./${s.dir}en/`, OUT), { recursive: true });
@@ -395,7 +395,7 @@ writeFileSync(new URL("./404.html", OUT), `<!DOCTYPE html>
 ${THEME}
 <style>body{margin:0;min-height:100vh;display:grid;place-items:center;text-align:center;background:#5C2330;color:#F6EBCB;font-family:Georgia,serif}a{display:inline-block;color:#E8D3A0;font-size:20px;margin:0 8px;padding:12px 16px;min-height:44px;box-sizing:border-box}p{font-size:18px}</style>
 </head>
-<body><div><p>This page does not exist. · हे पान उपलब्ध नाही.</p><p><a href="/en/">Wedding &amp; Reception</a> <a href="/reception/en/">Reception</a> <a href="/ma/" lang="mr">विवाह व स्वागत समारंभ</a> <a href="/reception/ma/" lang="mr">स्वागत समारंभ</a></p></div></body>
+<body><div><p>This page does not exist. · हे पान उपलब्ध नाही.</p><p><a href="/en/">Wedding &amp; Reception</a> <a href="/rec/en/">Reception</a> <a href="/ma/" lang="mr">विवाह व स्वागत समारंभ</a> <a href="/rec/ma/" lang="mr">स्वागत समारंभ</a></p></div></body>
 </html>
 `);
 

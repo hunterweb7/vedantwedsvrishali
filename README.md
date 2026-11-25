@@ -5,9 +5,9 @@ Invitation websites for Vedant & Vrishali, groom's side. One repository builds t
 | Site | English | Marathi |
 |---|---|---|
 | Wedding + Reception | `/en/` | `/ma/` |
-| Reception only | `/reception/en/` | `/reception/ma/` |
+| Reception only | `/rec/en/` | `/rec/ma/` |
 
-The root addresses `/` and `/reception/` open the last language the visitor chose, or the browser's language.
+The root addresses `/` and `/rec/` open the last language the visitor chose, or the browser's language.
 The bride's side site lives in its own repository (`vrishaliwedsvedant`).
 
 ## Edit and build
